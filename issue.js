@@ -12,7 +12,7 @@ $(function(){
   function getIssue(myUrl){
   $.ajax(
    {	 
-      url: myUrl,
+      url: "https://api.github.com/repos" + myUrl.replace(/^.*\/\/[^\/]+/, ''),
       type: "GET",
       headers: {'Authorization': 'token xxx'}
    }
@@ -20,12 +20,9 @@ $(function(){
   
   .done(function(issue){
 		saveIssue(issue);		
-	}); 
-	
+	});	
   } 
 
-  $("#pull").onClick(getIssue($("#url").value));
-  
-  
+  $("#pull").onClick(getIssue($("#url").value));  
   
 });
